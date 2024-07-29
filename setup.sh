@@ -1,24 +1,15 @@
 #!/data/data/com.termux/files/usr/bin/dash
-
-# Stop script on any error
-set -e
-
-# Function for displaying welcome message
-display_welcome_message() {
-    clear
+# Stop script on any error                        set -e
+                                                  # Function for displaying welcome message
+display_welcome_message() {                           clear
     echo "|-------------------------------------------|"
     echo "|   Welcome to the Technical Utility Zone   |"
     echo "|-------------------------------------------|"
-    echo "User: $(whoami)"
-    echo "Current date: $(date '+%Y-%m-%d')"
-    echo "Current time: $(date '+%H:%M:%S')"
-    sleep 2
-}
-
-# Function for displaying exit message
-display_exit_message() {
-    sleep 1
-    clear
+    echo "User: $(whoami)"                            echo "Current date: $(date '+%Y-%m-%d')"
+    echo "Current time: $(date '+%H:%M:%S')"          sleep 2
+}                                                 
+# Function for displaying exit message            display_exit_message() {
+    sleep 1                                           clear
     echo "|-------------------------------------------|"
     echo "|  Exiting Technical Utility Zone...        |"
     echo "|-------------------------------------------|"
@@ -101,8 +92,12 @@ install_required_dependencies() {
     echo "|  Installing system dependencies...        |"
     echo "|-------------------------------------------|"
     echo "Installing system dependencies..."
-    apt install -y nmap wireshark-cli tmux nano vim neofetch tcpdump traceroute dnsutils build-essential python git curl wget nodejs openssh docker
+    apt install -y nmap wireshark-cli tmux nano vim neofetch tcpdump traceroute dnsutils build-essential python git curl wget nodejs openssh docker php xfce4 glmark2 mpv
     echo "System dependencies installed successfully."
+
+    echo "Installing web browser and music player..."
+    apt install -y firefox vlc
+    echo "Web browser and music player installed successfully."
 }
 
 # Function to install Python packages
@@ -115,6 +110,18 @@ install_python_packages() {
     echo "Installing Python packages..."
     pip install requests flask
     echo "Python packages installed successfully."
+}
+
+# Function to install Composer
+install_composer() {
+    sleep 1
+    clear
+    echo "|-------------------------------------------|"
+    echo "|      Installing Composer...               |"
+    echo "|-------------------------------------------|"
+    echo "Installing Composer..."
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/data/data/com.termux/files/usr/bin --filename=composer
+    echo "Composer installed successfully."
 }
 
 # Function to make the password directory read-only
@@ -152,6 +159,7 @@ main() {
     update_system_packages
     install_required_dependencies
     install_python_packages
+    install_composer
     setup_repositories
     display_exit_message
 }
