@@ -1,15 +1,23 @@
 #!/data/data/com.termux/files/usr/bin/dash
-# Stop script on any error                        set -e
-                                                  # Function for displaying welcome message
-display_welcome_message() {                           clear
+# Stop script on any error
+set -e
+
+# Function for displaying welcome message
+display_welcome_message() {
+    clear
     echo "|-------------------------------------------|"
     echo "|   Welcome to the Technical Utility Zone   |"
     echo "|-------------------------------------------|"
-    echo "User: $(whoami)"                            echo "Current date: $(date '+%Y-%m-%d')"
-    echo "Current time: $(date '+%H:%M:%S')"          sleep 2
-}                                                 
-# Function for displaying exit message            display_exit_message() {
-    sleep 1                                           clear
+    echo "User: $(whoami)"
+    echo "Current date: $(date '+%Y-%m-%d')"
+    echo "Current time: $(date '+%H:%M:%S')"
+    sleep 2
+}
+
+# Function for displaying exit message
+display_exit_message() {
+    sleep 1
+    clear
     echo "|-------------------------------------------|"
     echo "|  Exiting Technical Utility Zone...        |"
     echo "|-------------------------------------------|"
@@ -80,6 +88,7 @@ update_system_packages() {
     echo "|-------------------------------------------|"
     echo "Updating system packages..."
     pkg update -y && pkg upgrade -y
+    pkg install -y root-repo x11-repo
     sleep 1
     echo "System packages updated successfully."
 }
@@ -92,12 +101,8 @@ install_required_dependencies() {
     echo "|  Installing system dependencies...        |"
     echo "|-------------------------------------------|"
     echo "Installing system dependencies..."
-    apt install -y nmap wireshark-cli tmux nano vim neofetch tcpdump traceroute dnsutils build-essential python git curl wget nodejs openssh docker php xfce4 glmark2 mpv
+    apt install -y nmap wireshark-cli tmux nano vim neofetch tcpdump traceroute dnsutils build-essential python git curl wget nodejs openssh docker php xfce4 glmark2 mpv firefox
     echo "System dependencies installed successfully."
-
-    echo "Installing web browser and music player..."
-    apt install -y firefox vlc
-    echo "Web browser and music player installed successfully."
 }
 
 # Function to install Python packages
