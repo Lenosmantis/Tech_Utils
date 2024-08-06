@@ -101,7 +101,7 @@ install_required_dependencies() {
     echo "|  Installing system dependencies...        |"
     echo "|-------------------------------------------|"
     echo "Installing system dependencies..."
-    apt install -y nmap wireshark-cli tmux nano vim neofetch tcpdump traceroute dnsutils build-essential python git curl wget nodejs openssh docker php xfce4 glmark2 mpv firefox
+    apt install -y nmap wireshark-cli tmux nano vim neofetch tcpdump traceroute dnsutils build-essential python git curl wget nodejs openssh docker php xfce4 glmark2 mpv firefox thunar xfce4-terminal xfce4-settings xfce4-appfinder xfce4-notifyd xfce4-screenshooter xfce4-taskmanager xfce4-panel ristretto mousepad
     echo "System dependencies installed successfully."
 }
 
